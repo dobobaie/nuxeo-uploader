@@ -1,0 +1,36 @@
+{
+  "name": "nuxeo-uploader",
+  "version": "0.0.2",
+  "description": "Upload easily a file to nuxeo.",
+  "main": "nuxeoUploader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dobobaie/nuxeo-uploader.git"
+  },
+  "author": "dobobaie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dobobaie/nuxeo-uploader/issues"
+  },
+  "homepage": "https://github.com/dobobaie/nuxeo-uploader#readme",
+  "dependencies": {
+    "baby-workers": "^1.0.1",
+    "btoa": "^1.1.2",
+    "data-factory": "0.0.1",
+    "file-name": "^0.1.0",
+    "mime-types": "^2.1.17",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "nuxeo",
+    "upload",
+    "uploader",
+    "file",
+    "attach",
+    "manager"
+  ]
+}
