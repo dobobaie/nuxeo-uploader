@@ -159,12 +159,6 @@ var nuxeoUploader = function(url, option)
 
 		var uploadUpdateDocument = function()
 		{
-			console.log({
-				name: __engine.document.name,
-				'entity-type': 'document',
-				type: 'File',
-				'properties': getProperties(),
-			});
 			request
 				.put(requestNuxeo('id/' + __engine.infosDocument.uid, {
 					name: __engine.document.name,
