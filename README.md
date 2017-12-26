@@ -1,4 +1,4 @@
-# Workers Javascript
+# Nuxeo Uploader Javascript
 Upload easily a file to nuxeo.
 
 ## Install
@@ -21,11 +21,11 @@ nuxeoUp({
 	id_file: '', // optional | to update existing file
 	document: { // optional
 		name: '', // optional | name of file entity
-		title: '', // optional | title of file entity
+		title: '', // optional | title of file entity | default name document
 		description: '', // optional | description of file entity
 	},
-	file: '', // optional | file informations
-	attach: ['', ''], // optional | attach files informations
+	file: 'myUrl', // optional | file informations
+	attach: ['myUrl', 'myUrl'], // optional | attach files informations
 }).then((data) => {
 	//
 }).catch((error) => {
@@ -45,14 +45,14 @@ nuxeoUp({
 	id_file: '', // optional | to update existing file
 	document: { // optional
 		name: '', // optional | name of file entity
-		title: '', // optional | title of file entity
+		title: '', // optional | title of file entity | default name document
 		description: '', // optional | description of file entity
 	},
 	file: { // optional | file informations
-		id: '', // optional | nuxeo batch file id 
-		url: '', // file url
+		id: '1', // optional | nuxeo batch file id 
+		url: 'myUrl', // file url
 	},
-	attach: [''], // optional | attach files informations
+	attach: ['myUrl'], // optional | attach files informations
 }).then((data) => {
 	//
 }).catch((error) => {
@@ -69,18 +69,18 @@ nuxeoUp({
 	id_file: '', // optional | to update existing file
 	document: { // optional
 		name: '', // optional | name of file entity
-		title: '', // optional | title of file entity
+		title: '', // optional | title of file entity | default name document
 		description: '', // optional | description of file entity
 	},
-	file: '', // optional | file informations
+	file: 'myUrl', // optional | file informations
 	attach: [  // optional | attach informations
 		{
-			id: '', // optional | nuxeo batch file id 
-			url: '', // file url
+			id: '1', // optional | nuxeo batch file id 
+			url: 'myUrl', // file url
 		},
 		{
-			id: '', // optional | nuxeo batch file id 
-			url: '', // file url
+			id: '0', // optional | nuxeo batch file id 
+			url: 'myUrl', // file url
 		},
 	],
 }).then((data) => {
@@ -94,4 +94,3 @@ nuxeoUp({
 ## Works
 
 To upload a file in nuxeo you have to fill `file` property but if you want to attach files in a entity you have to fill 'attach' property.
-Easy, fast and why have you choose Nuxeo ? It's horrible ...

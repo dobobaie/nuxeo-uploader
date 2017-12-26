@@ -37,7 +37,7 @@ var nuxeoUploader = function(url, option)
 					__engine.infosAttach = ((tmp = workers.initAttach.get()) == null ? [] : tmp);
 					__engine.document = (typeof(data.document) == 'object' ? data.document : {});
 					__engine.document.name = (__engine.document.name == undefined ? __engine.infosFile.name : __engine.document.name);
-					__engine.document.title = (__engine.document.title == undefined ? '' : __engine.document.title);
+					__engine.document.title = (__engine.document.title == undefined ? __engine.document.name : __engine.document.title);
 					__engine.document.description = (__engine.document.description == undefined ? '' : __engine.document.description);
 
 					if (__engine.id_file != null && __engine.id_file != undefined) {
@@ -122,6 +122,9 @@ var nuxeoUploader = function(url, option)
 		
 		var uploadVerifyDocument = function()
 		{
+			if (__engine.id_file == null) {
+				return uploadCreateDocument();
+			}
 			request
 				.get(requestNuxeo('id/' + __engine.id_file), function(error, response, body) {
 					if (error != null || response.statusCode == 500 || response.statusCode == 404) {
@@ -143,9 +146,9 @@ var nuxeoUploader = function(url, option)
 					properties: {
 						'dc:title': __engine.document.title,
 						'dc:description': __engine.document.description,
-						// 'common:icon': null,
-						// 'common:icon-expanded': null,
-						// 'common:size': null,
+						'common:icon': null,
+						'common:icon-expanded': null,
+						'common:size': null,
 					}
 				}), function(error, response, body) {
 					if (error != null || response.statusCode == 500 || response.statusCode == 404) {
