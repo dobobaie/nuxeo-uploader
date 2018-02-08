@@ -24,11 +24,7 @@ var nuxeoUploader = function(url, option)
 					initializeFiles(worker, data.file);
 				}).run();
 
-				workers.complete(function(error) {
-					if (error != null) {
-						return reject(error);
-					}
-
+				workers.then(function(error) {
 					__engine.resolve = resolve;
 					__engine.reject = reject;
 					__engine.id_parent = data.id_parent;
@@ -45,7 +41,7 @@ var nuxeoUploader = function(url, option)
 					}
 					return uploadVerifyDocument();
 				}, false);
-			});
+			}).catch(reject);
 		}
 
 		var initializeFiles = function(worker, files)
@@ -71,15 +67,11 @@ var nuxeoUploader = function(url, option)
 			}
 
 			worker.create('uploadFiles', uploadGenerateBatchId, listFiles).save(new dataFactory).run();
-			worker.uploadFiles.complete(function(error, fatalError) {
-				if (error !== null) {
-					worker.error(error, fatalError);
-					return worker.pop();
-				}
+			worker.uploadFiles.then(function() {
 				var retFiles = (Array.isArray(files) == true ? worker.uploadFiles.get().getStack() : worker.uploadFiles.get().getStack()[0]);
 				worker._save(retFiles);
 				worker.pop();
-			});
+			}).catch(worker.pop);
 		}
 
 		var uploadGenerateBatchId = function(worker, infosFile)

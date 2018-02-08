@@ -1,6 +1,6 @@
 {
   "name": "nuxeo-uploader",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Upload easily a file to nuxeo.",
   "main": "nuxeoUploader.min.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/dobobaie/nuxeo-uploader#readme",
   "dependencies": {
-    "baby-workers": "^1.0.1",
+    "baby-workers": "^2.0.0",
     "btoa": "^1.1.2",
     "data-factory": "0.0.1",
     "file-name": "^0.1.0",
