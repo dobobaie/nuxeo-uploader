@@ -4,7 +4,6 @@ var filename = require('file-name');
 var mime = require('mime-types');
 var request = require('request');
 var babyWorkers = require('baby-workers');
-var dataFactory = require('data-factory');
 
 var nuxeoUploader = function(url, option)
 {
@@ -66,9 +65,9 @@ var nuxeoUploader = function(url, option)
 				});
 			}
 
-			worker.create('uploadFiles', uploadGenerateBatchId, listFiles).save(new dataFactory).run();
+			worker.create('uploadFiles', uploadGenerateBatchId, listFiles).save([]).run();
 			worker.uploadFiles.then(function() {
-				var retFiles = (Array.isArray(files) == true ? worker.uploadFiles.get().getStack() : worker.uploadFiles.get().getStack()[0]);
+				var retFiles = (Array.isArray(files) == true ? worker.uploadFiles.get() : worker.uploadFiles.get()[0]);
 				worker._save(retFiles);
 				worker.pop();
 			}).catch(worker.pop);
